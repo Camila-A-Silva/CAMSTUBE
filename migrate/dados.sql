@@ -14,11 +14,11 @@ INSERT INTO `camstube`.`musica`
 `url_imagem`,
 `nome_genero`)
 VALUES
-("Djvan",
+("OMI",
 "03:10",
-"Lilás",
-"https://pt.wikipedia.org/wiki/Lil%C3%A1s_%28%C3%A1lbum%29#/media/Ficheiro:Djavan_lilas.jpg",
-"MPB"),
+"Cheerleaders",
+"https://upload.wikimedia.org/wikipedia/pt/6/63/Capa_de_Cheerleader.jpg",
+"POP"),
 ("Tim Maia",
 "02:48",
 "Não Quero Dinheiro",
