@@ -76,9 +76,9 @@
             <aside class="column is-2 is-hidden-mobile">
                 <div class="menu">
                     <p class="menu-label">Categorias</p>
-                    {% for musica in musc_html %}
+                    {% for genero in gen_html %}
                     <ul class="menu-list">
-                        <li><a href="#"><span class="icon"><i class="fa-solid fa-compact-disc"></i></span> {{ musica.nome_genero }}</a></li>
+                        <li><a href="#" style="color: {{genero.cor}};"><span class="icon"><i class="fa-solid fa-compact-disc"></i></span> {{ genero.nome_genero }}</a></li>
                     </ul>
                     {% endfor %}
                 </div>
@@ -111,9 +111,10 @@
                         </div>
                     </div>
                     {% endfor %}
-                    </div>
-                    
+                </div>
+            </main>       
         </div>
     </div>
 </body>
 </html>
+
