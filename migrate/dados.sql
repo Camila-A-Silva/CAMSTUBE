@@ -3,10 +3,11 @@ INSERT INTO `camstube`.`genero`
 `icone`,
 `cor`)
 VALUES
-("Samba","","red"),
-("Pop","","blue"),
-("MPB","","#FACADA"),
-("Worship","","#9848c7");
+("Samba","","white"),
+("Pop","","white"),
+("MPB","","white"),
+("Worship","","white"),
+("Sertanejo","","white");
 
 INSERT INTO `camstube`.`musica`
 (`cantor`,

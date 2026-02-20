@@ -27,7 +27,8 @@ def salvarmusic(cantor:str, duracao:str, nome:str, url_imagem:str, nome_genero:s
         conexao.close()
 
         return True
-    except:
+    except Exception as erro:
+        print (erro)
         return False
 
    
