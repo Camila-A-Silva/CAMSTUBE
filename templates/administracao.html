@@ -137,16 +137,29 @@
                         <td class="is-family-monospace has-text-centered">{{ musica.duracao }}</td>
                         <td><span class="tag is-dark">{{ musica.nome_genero }}</span></td>
                         <td class="has-text-centered">
+                            {% if musica.ativo %}
                             <span class="tag is-success is-light">ATIVO</span>
+                            {% else %}
+                            <span class="tag is-danger is-light">DESATIVADO</span>
+                            {% endif %}
                         </td>
                         <td class="has-text-right px-5">
                             <div class="buttons is-right">
-                                <button class="button is-small is-warning is-light" title="Desativar">
+
+                                {% if musica.ativo == "ATIVO" %}
+                                <a href="/musica/ativar/{{musica.codigo}}/{{musica.ativo}}"> <button class="button is-small is-warning is-light" title="Ativar">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button></a>
+                                {% else %}
+                                <a href="/musica/ativar/{{musica.codigo}}/{{musica.ativo}}"> <button class="button is-small is-warning is-light" title="Desativar">
                                     <i class="fa-solid fa-eye-slash"></i>
-                                </button>
-                                <button class="button is-small is-danger is-light" title="Excluir">
+                                </button></a>
+                                {% endif %}
+
+                                <a href="/musica/delete/{{musica.codigo}}">  <button class="button is-small is-danger is-light" title="Excluir">
                                     <i class="fa-solid fa-trash"></i>
-                                </button>
+                                </button></a>
+                                
                             </div>
                         </td>
                     </tr>

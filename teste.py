@@ -1,3 +1,3 @@
-from model.musica import salvarmusic
+from model.musica import ativar_msc
 
-salvarmusic("", "00:03:21", "A Nossa Praia", "https://akamai.sscdn.co/uploadfile/letras/albuns/d/6/7/6/568111489408508.jpg", "Sertanejo")
+ativar_msc(2, True)

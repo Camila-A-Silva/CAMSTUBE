@@ -3,7 +3,7 @@ from database.conexao import conectar
 def recuperar_msc():
     conexao, cursor = conectar()
 
-    cursor.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero FROM musica;")
+    cursor.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero, ativo FROM musica;")
     
     dic_msc = cursor.fetchall()
 
@@ -30,5 +30,29 @@ def salvarmusic(cantor:str, duracao:str, nome:str, url_imagem:str, nome_genero:s
     except Exception as erro:
         print (erro)
         return False
+    
+def deletar(codigo:int):
+
+    conexao, cursor = conectar()
+
+    cursor.execute("DELETE FROM musica WHERE codigo = %s",[codigo])
+    
+    conexao.commit()
+
+    conexao.close()
+
+def ativar_msc(codigo:int, status:bool):
+
+    conexao, cursor = conectar()
+
+    cursor.execute("""UPDATE musica 
+                   SET ativo = %s
+                   WHERE codigo = %s""", [status, codigo])
+    
+    conexao.commit()
+
+    conexao.close()
+
+    
 
    

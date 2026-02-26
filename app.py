@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import mysql.connector
-from model.musica import recuperar_msc, salvarmusic
+from model.musica import recuperar_msc, salvarmusic, deletar, ativar_msc
 from model.genero import recuperar_gen
 
 app = Flask(__name__)
@@ -33,6 +33,21 @@ def api_inserir_musica():
         return redirect("/admin")
     else:
         "Erro ao adicionar música"
+
+# O que está entre <> é o valor que vai ser excluida
+
+@app.route("/musica/deletar/<codigo>")
+def pg_deletar_msc(codigo):
+    deletar(codigo)
+    return redirect("/admin")
+
+# Vai ativar ou deativar
+
+@app.route("/musica/ativar/<codigo>")
+def pg_ativar_msc(codigo,status):
+    ativar_msc(codigo,status)
+    return redirect("/admin")
+
 
 
 
