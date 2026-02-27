@@ -11,7 +11,7 @@ def pg_principal():
     # Chamanda o arquivo dos generos
     dic_gen = recuperar_gen()  
     # Chamanda o arquivo das musicas
-    dic_msc = recuperar_msc()
+    dic_msc = recuperar_msc(True)
 
     return render_template("principal.html", musc_html = dic_msc, gen_html = dic_gen)
    
@@ -36,17 +36,21 @@ def api_inserir_musica():
 
 # O que está entre <> é o valor que vai ser excluida
 
-@app.route("/musica/deletar/<codigo>")
+@app.route("/musica/delete/<codigo>")
 def pg_deletar_msc(codigo):
     deletar(codigo)
     return redirect("/admin")
 
 # Vai ativar ou deativar
 
-@app.route("/musica/ativar/<codigo>")
-def pg_ativar_msc(codigo,status):
-    ativar_msc(codigo,status)
+@app.route("/musica/ativar/<codigo>/<ativo>")
+def pg_ativar_msc(codigo,ativo):
+    ativar_msc(codigo,ativo)
     return redirect("/admin")
+
+@app.route("login")
+def pg_cadastro():
+    return("cadastro.html")
 
 
 

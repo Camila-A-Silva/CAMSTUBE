@@ -146,12 +146,12 @@
                         <td class="has-text-right px-5">
                             <div class="buttons is-right">
 
-                                {% if musica.ativo == "ATIVO" %}
-                                <a href="/musica/ativar/{{musica.codigo}}/{{musica.ativo}}"> <button class="button is-small is-warning is-light" title="Ativar">
+                                {% if musica.ativo %}
+                                <a href="/musica/ativar/{{musica.codigo}}/0"> <button class="button is-small is-warning is-light" title="Ativar">
                                     <i class="fa-solid fa-eye"></i>
                                 </button></a>
                                 {% else %}
-                                <a href="/musica/ativar/{{musica.codigo}}/{{musica.ativo}}"> <button class="button is-small is-warning is-light" title="Desativar">
+                                <a href="/musica/ativar/{{musica.codigo}}/1"> <button class="button is-small is-warning is-light" title="Desativar">
                                     <i class="fa-solid fa-eye-slash"></i>
                                 </button></a>
                                 {% endif %}

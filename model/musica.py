@@ -1,15 +1,21 @@
 from database.conexao import conectar
 
-def recuperar_msc():
+def recuperar_msc(ativo:bool=False, genero:str=None):
+
     conexao, cursor = conectar()
 
-    cursor.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero, ativo FROM musica;")
-    
+    if ativo == False:
+        cursor.execute("""SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero, ativo FROM musica """)
+    else:
+        cursor.execute("""SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero, ativo FROM musica WHERE ativo = 1 """)
+        
     dic_msc = cursor.fetchall()
 
     conexao.close()
 
     return dic_msc
+
+    
 
 def salvarmusic(cantor:str, duracao:str, nome:str, url_imagem:str, nome_genero:str) -> bool:
     """
