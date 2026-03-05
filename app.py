@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 import mysql.connector
 from model.musica import recuperar_msc, salvarmusic, deletar, ativar_msc
 from model.genero import recuperar_gen
+from model.usuario import cadastro
 
 app = Flask(__name__)
 
@@ -48,10 +49,21 @@ def pg_ativar_msc(codigo,ativo):
     ativar_msc(codigo,ativo)
     return redirect("/admin")
 
-@app.route("login")
+@app.route("/cadastro")
 def pg_cadastro():
-    return("cadastro.html")
+    return render_template("cadastro.html")
 
+@app.route("/cadastro", methods=["POST"])
+def rota_cad():
+    dic_usu = request.form.get("usuario")
+    dic_sen = request.form.get("senha")
+    cadastro(dic_usu, dic_sen)
+    return redirect("/cadastro")
+
+@app.route("/login")
+def pg_login():
+    return render_template("login.html")
+   
 
 
 

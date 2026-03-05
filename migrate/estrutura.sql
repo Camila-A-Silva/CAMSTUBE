@@ -19,5 +19,9 @@ CREATE TABLE IF NOT EXISTS musica (
  CONSTRAINT FK_musica_0 FOREIGN KEY (nome_genero) REFERENCES genero (nome_genero)
 );
 
+CREATE TABLE IF NOT EXISTS usuario (
+login VARCHAR(50) PRIMARY KEY,
+senha VARCHAR(100) NOT NULL
+);
 
 
