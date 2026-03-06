@@ -1,3 +1,4 @@
-from model.musica import ativar_msc
+from model.usuario import verificar_usuario
 
-ativar_msc(2, True)
+retorno = verificar_usuario("cams", "123")
+print(retorno)
