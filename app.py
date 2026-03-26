@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, flash
 import mysql.connector
 from model.musica import recuperar_msc, salvarmusic, deletar, ativar_msc
 from model.genero import recuperar_gen
 from model.usuario import cadastro, verificar_usuario
 
 app = Flask(__name__)
+
+app.secret_key = "tinkerbell"
 
 @app.route("/")
 def pg_principal():
@@ -19,6 +21,9 @@ def pg_principal():
 
 @app.route("/admin")
 def pg_admin():
+    if "usuario_logado" not in session:
+        return redirect("/login")
+    
     dic_msc = recuperar_msc()
     dic_gen = recuperar_gen()
     return render_template("administracao.html", musc_html = dic_msc, gen_html = dic_gen)
@@ -62,22 +67,31 @@ def rota_cad():
 
 @app.route("/login")
 def pg_login():
+    if "usuario_logado" in session:
+        return redirect("/admin")
+    session.clear()
     return render_template("login.html")
+    
 
 @app.route("/login", methods=["POST"])
 def rota_log():
-    login = request.form.get("login")
-    senha = request.form.get("senha")
+    login = request.form.get("usuario")
+    senha = request.form.get("senha") 
     usuario = verificar_usuario(login, senha)
-    
+    session.clear()
+
     if usuario:
+        session["usuario_logado"] = usuario
         return redirect("/admin")
     else:
+        flash("Usuário ou senha inválida!","danger")
         return redirect("/login")
+    
+@app.route("/logoff")
+def logoff():
+    session.clear()
+    return redirect("/login")
    
-
-
-
 if (__name__) == "__main__":
     app.run(debug=True)
 

@@ -1,24 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    
+    <title>Login Moderno</title>
+    <style>
+        /* Importando uma fonte moderna */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Degradê moderno */
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        input:focus {
+            border-color: #764ba2;
+            box-shadow: 0 0 8px rgba(118, 75, 162, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #764ba2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #5a387d;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+    </style>
 </head>
 <body>
-    <form action="./login.html" method="POST">
+    <div>
+        {% with messages = get_flashed_messages()%}
+        {% for mensagem in mensagens %}
+        <h3>{{mensagem}}</h3>
+        {% endfor %}
+        {% endwith %}
+        
+    </div>
+    <div class="login-card">
+        <h2>Logar</h2>
+        <form action="/login" method="POST">
+            
+            <div class="input-group">
+                <label for="usuario">Usuário</label>
+                <input id="usuario" name="usuario" type="text" placeholder="Digite seu usuário" required>
+            </div>
 
-        <p>Usuário</p>
-        <input id="usuario" name="usuario" type="text">
+            <div class="input-group">
+                <label for="senha">Senha</label>
+                <input id="senha" name="senha" type="password" placeholder="••••••••" required>
+            </div>
 
-        <p>Senha</p>
-        <input id="senha" name="senha" type="password">
+            <button type="submit">ENTRAR</button>
+        </form>
+    </div>
 
-        <br>
-        <button type="submit">CADASTRA</button>
-    </form>
-
-    
 </body>
 </html>

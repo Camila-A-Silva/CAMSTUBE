@@ -57,3 +57,8 @@ VALUES
 "https://i.scdn.co/image/ab67616d0000b2739f0759436c17f3f08845b0e6",
 "Worship");
 
+
+INSERT INTO `camstube`.`cadastro`
+(`login`,`senha`)
+VALUES 
+('Camss', '1234');
